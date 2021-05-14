@@ -25,6 +25,8 @@
         android:layout_marginBottom="161dp"
         android:onClick="aboutMe"
         android:text="@string/about_string"
+        android:background="@android:color/holo_red_dark"
+        android:textColor="@android:color/holo_blue_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/aboutEmail"
         app:layout_constraintStart_toStartOf="@+id/aboutEmail"
