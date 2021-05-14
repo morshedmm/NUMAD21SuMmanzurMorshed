@@ -34,7 +34,7 @@
         android:id="@+id/myName"
         android:layout_width="144dp"
         android:layout_height="26dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="15dp"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/aboutEmail"
         app:layout_constraintEnd_toEndOf="parent"
