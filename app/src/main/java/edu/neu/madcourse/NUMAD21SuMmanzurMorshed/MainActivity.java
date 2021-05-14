@@ -17,10 +17,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void aboutMe(View view) {
 
-        //TextView emailView = findViewById(R.id.aboutEmail);
+        TextView emailView = findViewById(R.id.aboutEmail);
         TextView textView = findViewById(R.id.myName);
         textView.setText("MManzur Morshed");
-        //emailView.setText("morshed.mm@northeastern.edu");
+        emailView.setText("morshed.mm@northeastern.edu");
 
     }
 }
