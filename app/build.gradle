@@ -3,6 +3,20 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('/Users/mmorshed/keystore.jks')
+            storePassword 'pqrs5678'
+            keyAlias 'key5'
+            keyPassword 'pqrs5678'
+        }
+        release {
+            storeFile file('/Users/mmorshed/keystore.jks')
+            storePassword 'pqrs5678'
+            keyAlias 'key5'
+            keyPassword 'pqrs5678'
+        }
+    }
     compileSdkVersion 30
 
     defaultConfig {

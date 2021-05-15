@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.myName);
         textView.setText("MManzur Morshed");
         emailView.setText("morshed.mm@northeastern.edu");
-        //textview;
+
 
     }
 }
