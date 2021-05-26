@@ -6,4 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".AboutMeActivity">
 
+    <TextView
+        android:id="@+id/myName"
+        android:layout_width="144dp"
+        android:layout_height="26dp"
+        android:layout_marginBottom="15dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/aboutEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+         />
+
+    <TextView
+        android:id="@+id/aboutEmail"
+        android:layout_width="231dp"
+        android:layout_height="33dp"
+        android:layout_marginBottom="23dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myName" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
