@@ -17,11 +17,39 @@ public class ClickyActivity extends AppCompatActivity {
 
     }
 
-    public void clickyResponse(View view) {
+    public void clickyResponseA(View view) {
 
         TextView textView = findViewById(R.id.response);
-        textView.setText("MManzur Morshed");
+        textView.setText("Pressed: A");
+    }
 
+    public void clickyResponseB(View view) {
 
+        TextView textView = findViewById(R.id.response);
+        textView.setText("Pressed: B");
+    }
+
+    public void clickyResponseC(View view) {
+
+        TextView textView = findViewById(R.id.response);
+        textView.setText("Pressed: C");
+    }
+
+    public void clickyResponseD(View view) {
+
+        TextView textView = findViewById(R.id.response);
+        textView.setText("Pressed: D");
+    }
+
+    public void clickyResponseE(View view) {
+
+        TextView textView = findViewById(R.id.response);
+        textView.setText("Pressed: E");
+    }
+
+    public void clickyResponseF(View view) {
+
+        TextView textView = findViewById(R.id.response);
+        textView.setText("Pressed: F");
     }
 }
