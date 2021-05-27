@@ -19,7 +19,13 @@ public class MainActivity extends AppCompatActivity {
 
         Intent activity2Intent = new Intent(getApplicationContext(), AboutMeActivity.class);
         startActivity(activity2Intent);
-
-
     }
+
+    public void clicky(View view) {
+
+        Intent activity3Intent = new Intent(getApplicationContext(), ClickyActivity.class);
+        startActivity(activity3Intent);
+    }
+
+
 }
