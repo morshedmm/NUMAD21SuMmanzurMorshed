@@ -16,7 +16,7 @@ public class ClickyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_clicky);
 
     }
-
+    //TextView textView2 = findViewById(R.id.response);
     public void clickyResponseA(View view) {
 
         TextView textView = findViewById(R.id.response);
