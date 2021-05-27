@@ -13,7 +13,7 @@
         android:layout_marginTop="261dp"
         android:layout_marginBottom="71dp"
         android:text="Hello World!"
-        app:layout_constraintBottom_toTopOf="@+id/myName"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,36 +22,30 @@
         android:id="@+id/aboutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="161dp"
+        android:layout_marginBottom="48dp"
+        android:background="@android:color/holo_red_dark"
         android:onClick="aboutMe"
         android:text="@string/about_string"
-        android:background="@android:color/holo_red_dark"
+
+
         android:textColor="@android:color/holo_blue_dark"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/aboutEmail"
-        app:layout_constraintStart_toStartOf="@+id/aboutEmail"
-        app:layout_constraintTop_toBottomOf="@+id/aboutEmail" />
-
-    <TextView
-        android:id="@+id/myName"
-        android:layout_width="144dp"
-        android:layout_height="26dp"
-        android:layout_marginBottom="15dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/aboutEmail"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/clickyButton" />
 
-    <TextView
-        android:id="@+id/aboutEmail"
-        android:layout_width="231dp"
-        android:layout_height="33dp"
-        android:layout_marginBottom="23dp"
+    <Button
+        android:id="@+id/clickyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="57dp"
+        android:text="CLICKY"
         app:layout_constraintBottom_toTopOf="@+id/aboutButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myName" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void aboutMe(View view) {
-        
+
         Intent activity2Intent = new Intent(getApplicationContext(), AboutMeActivity.class);
         startActivity(activity2Intent);
 
