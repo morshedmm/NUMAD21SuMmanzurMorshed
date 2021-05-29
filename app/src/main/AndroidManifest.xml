@@ -10,8 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NUMAD21SuMmanzurMorshed">
         <activity android:name=".ClickyActivity" android:configChanges="keyboardHidden
-        |orientation|screenSize">
-
+           |orientation|screenSize">
         </activity>
         <activity android:name=".AboutMeActivity" />
         <activity android:name=".MainActivity">
