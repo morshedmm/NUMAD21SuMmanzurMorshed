@@ -52,6 +52,7 @@
         android:id="@+id/linkcollectorbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="linkCollector"
         android:text="Link Collector"
         app:layout_constraintBottom_toTopOf="@+id/clickyButton"
         app:layout_constraintEnd_toEndOf="parent"
