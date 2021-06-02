@@ -175,7 +175,8 @@ public class LinkCollectorActivity extends AppCompatActivity {
 
     private void addItem(int position) {
         EditText nameText = (EditText)findViewById(R.id.name);
-        itemList.add(position, new MyItemCard(R.drawable.empty, nameText.getText().toString(), "Item id: " + Math.abs(new Random().nextInt(100000)), false));
+        EditText urlText = (EditText)findViewById(R.id.url);
+        itemList.add(position, new MyItemCard(R.drawable.empty, nameText.getText().toString(), urlText.getText().toString(), false));
         Toast.makeText(LinkCollectorActivity.this, "Add an item", Toast.LENGTH_SHORT).show();
 
         rviewAdapter.notifyItemInserted(position);
