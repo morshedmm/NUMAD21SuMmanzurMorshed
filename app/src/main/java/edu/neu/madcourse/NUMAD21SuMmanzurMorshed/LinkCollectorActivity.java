@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -60,7 +61,10 @@ public class LinkCollectorActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-                Toast.makeText(LinkCollectorActivity.this, "Delete an item", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(LinkCollectorActivity.this, "Delete an item", Toast.LENGTH_SHORT).show();
+                View parentLayout = findViewById(android.R.id.content);
+                Snackbar.make(parentLayout, "Link Entry deleted", Snackbar.LENGTH_LONG).show();
+
                 int position = viewHolder.getLayoutPosition();
                 itemList.remove(position);
 
@@ -165,7 +169,10 @@ public class LinkCollectorActivity extends AppCompatActivity {
                 try {
                     startActivity(intent);
                 } catch (android.content.ActivityNotFoundException e) {
-                    Toast.makeText(LinkCollectorActivity.this, "Invalid Link!", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(LinkCollectorActivity.this, "Invalid Link!", Toast.LENGTH_SHORT).show();
+                    View parentLayout = findViewById(android.R.id.content);
+                    Snackbar.make(parentLayout, "Invalid Link!", Snackbar.LENGTH_LONG).show();
+
                 }
 
             }
@@ -199,12 +206,18 @@ public class LinkCollectorActivity extends AppCompatActivity {
         Matcher matcher2 = pattern2.matcher(urlText.getText().toString());
 
         if (! matcher1.find() && ! matcher2.find()) {
-            Toast.makeText(LinkCollectorActivity.this, "Not Added! use http://www.", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(LinkCollectorActivity.this, "Not Added! use http://www.", Toast.LENGTH_SHORT).show();
+            View parentLayout = findViewById(android.R.id.content);
+            Snackbar.make(parentLayout, "Not Added! use http://www.", Snackbar.LENGTH_LONG).show();
+
             return;
         }
 
         itemList.add(position, new MyItemCard(R.drawable.empty, nameText.getText().toString(), urlText.getText().toString(), false));
-        Toast.makeText(LinkCollectorActivity.this, "Link Added!", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(LinkCollectorActivity.this, "Link Added!", Toast.LENGTH_SHORT).show();
+        View parentLayout = findViewById(android.R.id.content);
+        Snackbar.make(parentLayout, "Link Added!", Snackbar.LENGTH_LONG).show();
+
 
         nameText.getText().clear();
         urlText.getText().clear();
