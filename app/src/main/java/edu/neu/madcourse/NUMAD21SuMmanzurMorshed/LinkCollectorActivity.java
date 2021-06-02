@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -46,6 +48,15 @@ public class LinkCollectorActivity extends AppCompatActivity {
                 addItem(pos);
             }
         });
+        //////
+
+
+
+
+        ///////
+
+
+
 
         //Specify what action a specific gesture performs, in this case swiping right or left deletes the entry
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
@@ -153,9 +164,15 @@ public class LinkCollectorActivity extends AppCompatActivity {
             public void onItemClick(int position) {
                 //attributions bond to the item has been changed
                 itemList.get(position).onItemClick(position);
-
+                // Code for web page
+                //showWebPage(null, itemList.get(position).getItemDesc());
                 rviewAdapter.notifyItemChanged(position);
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(itemList.get(position).getItemDesc()));
+                //Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
+                startActivity(intent);
             }
+
+
 
             @Override
             public void onCheckBoxClick(int position) {
@@ -180,5 +197,11 @@ public class LinkCollectorActivity extends AppCompatActivity {
         Toast.makeText(LinkCollectorActivity.this, "Add an item", Toast.LENGTH_SHORT).show();
 
         rviewAdapter.notifyItemInserted(position);
+    }
+
+    public void showWebPage(View view, String urlLink) {
+
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlLink));
+        startActivity(intent);
     }
 }
