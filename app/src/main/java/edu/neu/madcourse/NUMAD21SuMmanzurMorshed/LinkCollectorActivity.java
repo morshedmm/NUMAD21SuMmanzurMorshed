@@ -48,15 +48,6 @@ public class LinkCollectorActivity extends AppCompatActivity {
                 addItem(pos);
             }
         });
-        //////
-
-
-
-
-        ///////
-
-
-
 
         //Specify what action a specific gesture performs, in this case swiping right or left deletes the entry
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
@@ -169,7 +160,12 @@ public class LinkCollectorActivity extends AppCompatActivity {
                 rviewAdapter.notifyItemChanged(position);
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(itemList.get(position).getItemDesc()));
                 //Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
-                startActivity(intent);
+                try {
+                    startActivity(intent);
+                } catch (android.content.ActivityNotFoundException e) {
+                    Toast.makeText(LinkCollectorActivity.this, "Invalid Link!", Toast.LENGTH_SHORT).show();
+                }
+                //startActivity(intent);
             }
 
 
@@ -194,14 +190,19 @@ public class LinkCollectorActivity extends AppCompatActivity {
         EditText nameText = (EditText)findViewById(R.id.name);
         EditText urlText = (EditText)findViewById(R.id.url);
         itemList.add(position, new MyItemCard(R.drawable.empty, nameText.getText().toString(), urlText.getText().toString(), false));
-        Toast.makeText(LinkCollectorActivity.this, "Add an item", Toast.LENGTH_SHORT).show();
+        Toast.makeText(LinkCollectorActivity.this, "Link Added!", Toast.LENGTH_SHORT).show();
 
         rviewAdapter.notifyItemInserted(position);
     }
 
+    /*
     public void showWebPage(View view, String urlLink) {
 
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlLink));
         startActivity(intent);
     }
+
+     */
+
+
 }
