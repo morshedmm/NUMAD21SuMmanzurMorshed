@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -173,7 +174,8 @@ public class LinkCollectorActivity extends AppCompatActivity {
     }
 
     private void addItem(int position) {
-        itemList.add(position, new MyItemCard(R.drawable.empty, "No Logo item", "Item id: " + Math.abs(new Random().nextInt(100000)), false));
+        EditText nameText = (EditText)findViewById(R.id.name);
+        itemList.add(position, new MyItemCard(R.drawable.empty, nameText.getText().toString(), "Item id: " + Math.abs(new Random().nextInt(100000)), false));
         Toast.makeText(LinkCollectorActivity.this, "Add an item", Toast.LENGTH_SHORT).show();
 
         rviewAdapter.notifyItemInserted(position);
