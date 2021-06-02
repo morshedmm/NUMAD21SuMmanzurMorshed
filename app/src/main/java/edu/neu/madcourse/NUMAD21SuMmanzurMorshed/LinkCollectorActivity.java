@@ -17,6 +17,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class LinkCollectorActivity extends AppCompatActivity {
 
@@ -165,7 +167,7 @@ public class LinkCollectorActivity extends AppCompatActivity {
                 } catch (android.content.ActivityNotFoundException e) {
                     Toast.makeText(LinkCollectorActivity.this, "Invalid Link!", Toast.LENGTH_SHORT).show();
                 }
-                //startActivity(intent);
+
             }
 
 
@@ -189,8 +191,26 @@ public class LinkCollectorActivity extends AppCompatActivity {
     private void addItem(int position) {
         EditText nameText = (EditText)findViewById(R.id.name);
         EditText urlText = (EditText)findViewById(R.id.url);
+
+        Pattern pattern1 = Pattern.compile("http://www", Pattern.CASE_INSENSITIVE);
+        Matcher matcher1 = pattern1.matcher(urlText.getText().toString());
+
+        Pattern pattern2 = Pattern.compile("https://www", Pattern.CASE_INSENSITIVE);
+        Matcher matcher2 = pattern2.matcher(urlText.getText().toString());
+
+        if (! matcher1.find() && ! matcher2.find()) {
+            Toast.makeText(LinkCollectorActivity.this, "Not Added! use http://www.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         itemList.add(position, new MyItemCard(R.drawable.empty, nameText.getText().toString(), urlText.getText().toString(), false));
         Toast.makeText(LinkCollectorActivity.this, "Link Added!", Toast.LENGTH_SHORT).show();
+
+        nameText.getText().clear();
+        urlText.getText().clear();
+
+        findViewById(R.id.addButton).requestFocus();
+
 
         rviewAdapter.notifyItemInserted(position);
     }
