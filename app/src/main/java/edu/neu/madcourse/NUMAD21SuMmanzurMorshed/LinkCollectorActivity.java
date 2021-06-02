@@ -18,11 +18,11 @@ import java.util.Random;
 public class LinkCollectorActivity extends AppCompatActivity {
 
     //Creating the essential parts needed for a Recycler view to work: RecyclerView, Adapter, LayoutManager
-    private ArrayList<ItemCard> itemList = new ArrayList<>();
+    private ArrayList<MyItemCard> itemList = new ArrayList<>();
 
 
     private RecyclerView recyclerView;
-    private RviewAdapter rviewAdapter;
+    private MyRviewAdapter rviewAdapter;
     private RecyclerView.LayoutManager rLayoutManger;
     private FloatingActionButton addButton;
 
@@ -82,13 +82,13 @@ public class LinkCollectorActivity extends AppCompatActivity {
         // This is only a possible way to do, please find your own way to generate the key
         for (int i = 0; i < size; i++) {
             // put image information id into instance
-            outState.putInt(KEY_OF_INSTANCE + i + "0", itemList.get(i).getImageSource());
+            //outState.putInt(KEY_OF_INSTANCE + i + "0", itemList.get(i).getImageSource());
             // put itemName information into instance
             outState.putString(KEY_OF_INSTANCE + i + "1", itemList.get(i).getItemName());
             // put itemDesc information into instance
             outState.putString(KEY_OF_INSTANCE + i + "2", itemList.get(i).getItemDesc());
             // put isChecked information into instance
-            outState.putBoolean(KEY_OF_INSTANCE + i + "3", itemList.get(i).getStatus());
+            //outState.putBoolean(KEY_OF_INSTANCE + i + "3", itemList.get(i).getStatus());
         }
         super.onSaveInstanceState(outState);
 
@@ -120,7 +120,7 @@ public class LinkCollectorActivity extends AppCompatActivity {
                     if (isChecked) {
                         itemName = itemName.substring(0, itemName.lastIndexOf("("));
                     }
-                    ItemCard itemCard = new ItemCard(imgId, itemName, itemDesc, isChecked);
+                    MyItemCard itemCard = new MyItemCard(imgId, itemName, itemDesc, isChecked);
 
                     itemList.add(itemCard);
                 }
@@ -146,7 +146,7 @@ public class LinkCollectorActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
 
-        rviewAdapter = new RviewAdapter(itemList);
+        rviewAdapter = new MyRviewAdapter(itemList);
         ItemClickListener itemClickListener = new ItemClickListener() {
             @Override
             public void onItemClick(int position) {
@@ -173,7 +173,7 @@ public class LinkCollectorActivity extends AppCompatActivity {
     }
 
     private void addItem(int position) {
-        itemList.add(position, new ItemCard(R.drawable.empty, "No Logo item", "Item id: " + Math.abs(new Random().nextInt(100000)), false));
+        itemList.add(position, new MyItemCard(R.drawable.empty, "No Logo item", "Item id: " + Math.abs(new Random().nextInt(100000)), false));
         Toast.makeText(LinkCollectorActivity.this, "Add an item", Toast.LENGTH_SHORT).show();
 
         rviewAdapter.notifyItemInserted(position);
