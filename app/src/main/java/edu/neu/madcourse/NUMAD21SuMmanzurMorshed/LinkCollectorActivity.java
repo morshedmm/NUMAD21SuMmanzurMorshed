@@ -221,8 +221,10 @@ public class LinkCollectorActivity extends AppCompatActivity {
 
         nameText.getText().clear();
         urlText.getText().clear();
+        View myLayout = findViewById(android.R.id.content);
+        myLayout.requestFocus();
 
-        findViewById(R.id.addButton).requestFocus();
+        //findViewById(R.id.addButton).requestFocus();
 
 
         rviewAdapter.notifyItemInserted(position);
