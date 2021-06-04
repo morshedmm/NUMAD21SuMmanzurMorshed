@@ -32,7 +32,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginStart="39dp"
             android:layout_marginTop="6dp"
-            android:layout_marginEnd="170dp"
+            android:layout_marginEnd="0dp"
             android:layout_toEndOf="@+id/my_item_name"
             android:text="item_description" />
 
