@@ -3,9 +3,11 @@ package edu.neu.madcourse.NUMAD21SuMmanzurMorshed;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.location.LocationProvider;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -14,15 +16,19 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
     private LocationManager locationManager;
     private TextView latitudeValue;
     private TextView longitudeValue;
+    private LocationProvider provider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
 
-        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        //provider = locationManager.getProvider(LocationManager.GPS_PROVIDER);
         latitudeValue = (TextView) findViewById(R.id.latitudeValue);
         longitudeValue = (TextView) findViewById(R.id.longitudeValue);
+
+
     }
 
     @Override
