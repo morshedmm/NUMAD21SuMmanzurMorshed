@@ -129,8 +129,8 @@ public class LocationActivity extends AppCompatActivity implements  LocationList
                             latitudeValue.setText(String.valueOf(curLocation.getLatitude()));
                         } else{
                             //latitudeValue.setText("Location null");
-                            Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                            startActivity(intent);
+                            //Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                            //startActivity(intent);
 
                         }
                         //latitudeValue.setText(String.valueOf(curLocation.getLatitude()));
@@ -152,7 +152,7 @@ public class LocationActivity extends AppCompatActivity implements  LocationList
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
-
+        return;
     }
     /////
 
