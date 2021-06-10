@@ -127,6 +127,7 @@ public class LocationActivity extends AppCompatActivity implements  LocationList
                         //Location curLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
                         if (curLocation != null) {
                             latitudeValue.setText(String.valueOf(curLocation.getLatitude()));
+                            longitudeValue.setText(String.valueOf(curLocation.getLongitude()));
                         } else{
                             //latitudeValue.setText("Location null");
                             //Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
@@ -141,7 +142,7 @@ public class LocationActivity extends AppCompatActivity implements  LocationList
 
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
-                    latitudeValue.setText("NOT granted");
+                    //latitudeValue.setText("NOT granted");
 
                 }
                 return;
@@ -152,7 +153,33 @@ public class LocationActivity extends AppCompatActivity implements  LocationList
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
+        latitudeValue.setText(String.valueOf(location.getLatitude()));
+        longitudeValue.setText(String.valueOf(location.getLongitude()));
         return;
+    }
+    /*
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+
+            locationManager.requestLocationUpdates(String.valueOf(provider), 400, 1, this);
+        }
+    }
+    */
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+
+            locationManager.removeUpdates(this);
+        }
     }
     /////
 
