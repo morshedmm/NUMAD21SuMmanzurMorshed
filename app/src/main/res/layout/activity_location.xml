@@ -6,4 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".LocationActivity">
 
+    <TextView android:id="@+id/latitudeLabel"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="latitudeLabel"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="4dip" />
+
+    <TextView android:id="@+id/latitudeValue"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_alignTop="@id/latitudeLabel"
+        android:layout_toRightOf="@id/latitudeLabel" />
+
+    <TextView android:id="@+id/longitudeLabel"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="longitudeLabel"
+        android:layout_below="@id/latitudeLabel"
+        android:layout_marginRight="4dip" />
+
+    <TextView android:id="@+id/longitudeValue"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_alignTop="@id/longitudeLabel"
+        android:layout_toRightOf="@id/longitudeLabel" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
