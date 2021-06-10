@@ -6,12 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".LocationActivity">
 
-    <TextView android:id="@+id/latitudeLabel"
-        android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/latitudeLabel"
         android:layout_width="wrap_content"
-        android:text="latitudeLabel"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="4dip" />
+        android:layout_marginTop="112dp"
+        android:text="latitudeLabel"
+        app:layout_constraintBottom_toTopOf="@+id/longitudeLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView android:id="@+id/latitudeValue"
         android:layout_height="wrap_content"
@@ -19,12 +25,17 @@
         android:layout_alignTop="@id/latitudeLabel"
         android:layout_toRightOf="@id/latitudeLabel" />
 
-    <TextView android:id="@+id/longitudeLabel"
-        android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/longitudeLabel"
         android:layout_width="wrap_content"
-        android:text="longitudeLabel"
+        android:layout_height="wrap_content"
         android:layout_below="@id/latitudeLabel"
-        android:layout_marginRight="4dip" />
+        android:layout_marginTop="40dp"
+        android:text="longitudeLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/latitudeLabel" />
 
     <TextView android:id="@+id/longitudeValue"
         android:layout_height="wrap_content"

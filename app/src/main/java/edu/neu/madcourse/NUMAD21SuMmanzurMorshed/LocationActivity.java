@@ -28,6 +28,8 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
     @Override
     public void onLocationChanged(@NonNull Location location) {
 
+        latitudeValue.setText(String.valueOf(location.getLatitude()));
+        longitudeValue.setText(String.valueOf(location.getLongitude()));
 
     }
 }
