@@ -13,10 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_mm_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NUMAD21SuMmanzurMorshed">
-        <activity android:name=".LinkCollectorActivity"></activity>
+        <activity android:name=".LocationActivity"></activity>
+        <activity android:name=".LinkCollectorActivity" />
         <activity
             android:name=".ClickyActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"></activity>
+            android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity android:name=".AboutMeActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -25,8 +26,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>
