@@ -110,6 +110,7 @@ public class LocationActivity extends AppCompatActivity implements  LocationList
             }
             return false;
         } else {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 400, 1, this);
             Location curLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             latitudeValue.setText(String.valueOf(curLocation.getLatitude()));
             longitudeValue.setText(String.valueOf(curLocation.getLongitude()));
