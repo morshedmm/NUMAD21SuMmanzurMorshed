@@ -36,56 +36,26 @@ public class LocationActivity extends AppCompatActivity implements  LocationList
         latitudeValue = (TextView) findViewById(R.id.latitudeValue);
         longitudeValue = (TextView) findViewById(R.id.longitudeValue);
 
-        //gpsLocation = requestUpdatesFromProvider(LocationManager.GPS_PROVIDER, R.string.not_support_gps);
-        /*
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        */
-
-        //locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10, 10000, listener);
-        //try {
-        //    final Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        //    latitudeValue.setText(String.valueOf(lastKnownLocation.getLatitude()));
-        //} catch (SecurityException e) {
-        //    latitudeValue.setText("Not available");
-        //}
-
-        checkLocationPermission();
+        askPermission();
 
 
 
     }
-    ///////////
+    
 
+    public static final int MY_PERMISSIONS_REQUEST_LOCATION = 50;
 
-    ////////
-
-    public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
-
-    public boolean checkLocationPermission() {
+    public boolean askPermission() {
 
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
 
 
-
-
-            // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.ACCESS_FINE_LOCATION)) {
 
-                // Show an explanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
+
                 new AlertDialog.Builder(this)
                         .setTitle("Permission")
                         .setMessage("Allow Access?")
@@ -103,7 +73,7 @@ public class LocationActivity extends AppCompatActivity implements  LocationList
 
 
             } else {
-                // No explanation needed, we can request the permission.
+                // No explanation.
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                         MY_PERMISSIONS_REQUEST_LOCATION);
