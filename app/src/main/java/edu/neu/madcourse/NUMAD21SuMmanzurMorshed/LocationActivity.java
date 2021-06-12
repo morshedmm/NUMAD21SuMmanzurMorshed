@@ -41,7 +41,7 @@ public class LocationActivity extends AppCompatActivity implements  LocationList
 
 
     }
-    
+
 
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 50;
 
