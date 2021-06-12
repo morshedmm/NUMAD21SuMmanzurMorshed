@@ -130,8 +130,7 @@ public class LocationActivity extends AppCompatActivity implements  LocationList
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     //grantResults[0] = -1;
-                    // permission was granted, yay! Do the
-                    // location-related task you need to do.
+                    // permission granted.
                     if (ContextCompat.checkSelfPermission(this,
                             Manifest.permission.ACCESS_FINE_LOCATION)
                             == PackageManager.PERMISSION_GRANTED) {
@@ -156,9 +155,9 @@ public class LocationActivity extends AppCompatActivity implements  LocationList
 
                 } else {
 
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
-                    latitudeValue.setText("NOT granted");
+                    // permission not granted.
+                    latitudeValue.setText("No Permission");
+                    longitudeValue.setText("No Permission");
 
                 }
                 return;
