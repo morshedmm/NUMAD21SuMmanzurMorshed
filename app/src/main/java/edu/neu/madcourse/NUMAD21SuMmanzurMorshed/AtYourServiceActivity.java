@@ -23,8 +23,9 @@ public class AtYourServiceActivity extends AppCompatActivity {
     private static final String TAG = "WebServiceActivity";
 
     //private EditText mURLEditText;
-    private String mURLEditText = "https://jsonplaceholder.typicode.com/posts/1";
-    //private TextView mTitleTextView = "https://jsonplaceholder.typicode.com/posts/1";
+    //private String mURLEditText = "https://jsonplaceholder.typicode.com/posts/1";
+
+    private String mURLEditText = "https://api.ip2country.info/ip?160.185.160.90";
     private TextView mTitleTextView;
 
 
@@ -100,7 +101,8 @@ public class AtYourServiceActivity extends AppCompatActivity {
             TextView result_view = (TextView) findViewById(R.id.result_textview);
 
             try {
-                result_view.setText(jObject.getString("title"));
+                //result_view.setText(jObject.getString("title"));
+                result_view.setText(jObject.getString("countryName"));
             } catch (JSONException e) {
                 result_view.setText("Something went wrong!");
             }
