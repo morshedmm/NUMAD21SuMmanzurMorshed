@@ -104,7 +104,7 @@ public class AtYourServiceActivity extends AppCompatActivity {
                 //result_view.setText(jObject.getString("title"));
                 result_view.setText(jObject.getString("countryName"));
             } catch (JSONException e) {
-                result_view.setText("Something went wrong!");
+                result_view.setText("Not a valid ip");
             }
 
         }
