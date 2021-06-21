@@ -13,7 +13,6 @@
 
         android:layout_marginTop="20dp"
         android:text="Hello World!"
-        app:layout_constraintBottom_toTopOf="@+id/clickyButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,10 +24,12 @@
         android:layout_marginTop="20dp"
 
 
+        android:layout_marginBottom="20dp"
         android:background="@android:color/holo_red_dark"
         android:onClick="aboutMe"
         android:text="@string/about_string"
         android:textColor="@android:color/holo_blue_dark"
+        app:layout_constraintBottom_toTopOf="@+id/atyourserviceButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,12 +39,10 @@
         android:id="@+id/clickyButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="20dp"
         android:onClick="clicky"
         android:text="CLICKY"
-        app:layout_constraintBottom_toTopOf="@+id/locationButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -51,26 +50,36 @@
         android:id="@+id/linkcollectorbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="120dp"
         android:onClick="linkCollector"
         android:text="Link Collector"
         app:layout_constraintBottom_toTopOf="@+id/aboutButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/locationButton" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/locationButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="28dp"
         android:onClick="myLocation"
         android:text="My Location"
-        app:layout_constraintBottom_toTopOf="@+id/linkcollectorbutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/atyourserviceButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:onClick="atYourService"
+        android:text="At Your Service"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clickyButton" />
+        app:layout_constraintTop_toBottomOf="@+id/aboutButton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

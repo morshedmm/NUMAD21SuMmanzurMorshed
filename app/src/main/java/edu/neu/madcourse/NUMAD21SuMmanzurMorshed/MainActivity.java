@@ -38,4 +38,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(activity5Intent);
     }
 
+    public void atYourService(View view) {
+        Intent activity6Intent = new Intent(getApplicationContext(), AtYourServiceActivity.class);
+        startActivity(activity6Intent);
+    }
+
 }
