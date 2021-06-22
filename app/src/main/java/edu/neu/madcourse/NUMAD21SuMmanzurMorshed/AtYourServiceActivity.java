@@ -36,6 +36,10 @@ public class AtYourServiceActivity extends AppCompatActivity {
 
         //mURLEditText = (EditText)findViewById(R.id.URL_editText);
         mTitleTextView = (TextView)findViewById(R.id.result_textview);
+        //callWebserviceButtonHandler(findViewById(android.R.id.content));
+    }
+
+    public void getIp(View view) {
         callWebserviceButtonHandler(findViewById(android.R.id.content));
     }
 

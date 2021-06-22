@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="45dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/label2_textview"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,9 +22,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="30dp"
+        android:layout_marginBottom="26dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="35.185.165.80"
+        app:layout_constraintBottom_toTopOf="@+id/get_ip_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/label_textview"
         app:layout_constraintTop_toBottomOf="@+id/result_textview" />
@@ -45,9 +47,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:text="Country"
         app:layout_constraintEnd_toStartOf="@+id/result_textview"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/get_ip_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Get IP Location"
+        android:onClick="getIp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/URL_editText" />
 </androidx.constraintlayout.widget.ConstraintLayout>
