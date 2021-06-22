@@ -25,7 +25,8 @@ public class AtYourServiceActivity extends AppCompatActivity {
     //private EditText mURLEditText;
     //private String mURLEditText = "https://jsonplaceholder.typicode.com/posts/1";
 
-    private String mURLEditText = "https://api.ip2country.info/ip?160.185.160.90";
+    //private String mURLEditText = "https://api.ip2country.info/ip?160.185.160.90";
+    private String mURLEditText = "https://api.ip2country.info/ip?";
     private TextView mTitleTextView;
 
 
@@ -47,7 +48,10 @@ public class AtYourServiceActivity extends AppCompatActivity {
         PingWebServiceTask task = new PingWebServiceTask();
         try {
             //String url = NetworkUtil.validInput(mURLEditText.getText().toString());
-            String url = NetworkUtil.validInput(mURLEditText);
+            //String url = NetworkUtil.validInput(mURLEditText);
+            EditText onlyURL = (EditText)findViewById(R.id.URL_editText);
+            String urlStringAll = mURLEditText + onlyURL.getText().toString();
+            String url = NetworkUtil.validInput(urlStringAll);
             task.execute(url); // This is a security risk.  Don't let your user enter the URL in a real app.
         } catch (NetworkUtil.MyException e) {
             Toast.makeText(getApplication(),e.toString(),Toast.LENGTH_SHORT).show();
