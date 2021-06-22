@@ -110,7 +110,12 @@ public class AtYourServiceActivity extends AppCompatActivity {
 
             try {
                 //result_view.setText(jObject.getString("title"));
-                result_view.setText(jObject.getString("countryName"));
+                if (jObject.getString("countryName").length() == 0) {
+                    result_view.setText(jObject.getString("IP Location Unknown"));
+                } else {
+                    result_view.setText(jObject.getString("countryName"));
+                }
+                //result_view.setText(jObject.getString("countryName"));
             } catch (JSONException e) {
                 result_view.setText("Not a valid ip");
             }
