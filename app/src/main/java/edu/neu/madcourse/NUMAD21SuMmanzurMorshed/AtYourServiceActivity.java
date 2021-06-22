@@ -2,11 +2,13 @@ package edu.neu.madcourse.NUMAD21SuMmanzurMorshed;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +24,8 @@ public class AtYourServiceActivity extends AppCompatActivity {
 
     private static final String TAG = "WebServiceActivity";
 
+    private ProgressBar progressBar;
+
     //private EditText mURLEditText;
     //private String mURLEditText = "https://jsonplaceholder.typicode.com/posts/1";
 
@@ -35,6 +39,8 @@ public class AtYourServiceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_at_your_service);
 
+        progressBar = (ProgressBar) findViewById(R.id.progress_loader);
+        progressBar.setVisibility(View.INVISIBLE);
         //mURLEditText = (EditText)findViewById(R.id.URL_editText);
         mTitleTextView = (TextView)findViewById(R.id.result_textview);
         //callWebserviceButtonHandler(findViewById(android.R.id.content));
@@ -42,10 +48,13 @@ public class AtYourServiceActivity extends AppCompatActivity {
 
     public void getIp(View view) {
         callWebserviceButtonHandler(findViewById(android.R.id.content));
+
     }
 
     public void callWebserviceButtonHandler(View view){
+        progressBar.setVisibility(View.VISIBLE);
         PingWebServiceTask task = new PingWebServiceTask();
+        
         try {
             //String url = NetworkUtil.validInput(mURLEditText.getText().toString());
             //String url = NetworkUtil.validInput(mURLEditText);
@@ -110,6 +119,7 @@ public class AtYourServiceActivity extends AppCompatActivity {
 
             try {
                 //result_view.setText(jObject.getString("title"));
+                progressBar.setVisibility(View.INVISIBLE);
                 if (jObject.getString("countryName").length() == 0) {
                     result_view.setText(jObject.getString("IP Location Unknown"));
                 } else {
@@ -117,6 +127,7 @@ public class AtYourServiceActivity extends AppCompatActivity {
                 }
                 //result_view.setText(jObject.getString("countryName"));
             } catch (JSONException e) {
+                progressBar.setVisibility(View.INVISIBLE);
                 result_view.setText("Not a valid ip");
             }
 
