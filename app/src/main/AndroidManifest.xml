@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_mm_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NUMAD21SuMmanzurMorshed">
-        <activity android:name=".AtYourServiceActivity"></activity>
+        <activity android:name=".AtYourServiceActivity" android:configChanges="keyboardHidden|orientation|screenSize"></activity>
         <activity android:name=".LocationActivity" />
         <activity android:name=".LinkCollectorActivity" />
         <activity
