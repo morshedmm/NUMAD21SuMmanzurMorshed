@@ -59,10 +59,10 @@
         android:id="@+id/get_ip_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="25dp"
-        android:text="Get IP Location"
         android:onClick="getIp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Get IP Location"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/URL_editText" />
 
