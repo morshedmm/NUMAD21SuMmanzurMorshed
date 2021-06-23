@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -35,12 +36,16 @@ public class AtYourServiceActivity extends AppCompatActivity {
 
     private JSONObject ipObject;
     private int displayIp = 1;
+    private Button playButton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_at_your_service);
+
+        playButton = (Button) findViewById(R.id.learn_more_button);
+        playButton.setVisibility(View.INVISIBLE);
 
         progressBar = (ProgressBar) findViewById(R.id.progress_loader);
         progressBar.setVisibility(View.INVISIBLE);
@@ -171,6 +176,7 @@ public class AtYourServiceActivity extends AppCompatActivity {
                                 + jObject.getString("countryEmoji");
                         //result_view.setText(jObject.getString("countryName"));
                         result_view.setText(output);
+                        playButton.setVisibility(View.VISIBLE);
                     }
                     //result_view.setText(jObject.getString("countryName"));
                 } else {
