@@ -85,7 +85,7 @@ public class AtYourServiceActivity extends AppCompatActivity {
 
             String urlStringAll = null;
             try {
-                urlStringAll = "https://restcountries.eu/rest/v2/name/" + ipObject.getString("countryName");
+                urlStringAll = "https://restcountries.eu/rest/v2/name/" + ipObject.getString("countryCode3");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -119,7 +119,17 @@ public class AtYourServiceActivity extends AppCompatActivity {
 
                 // JSONArray jArray = new JSONArray(resp);    // Use this if your web service returns an array of objects.  Arrays are in [ ] brackets.
                 // Transform String into JSONObject
-                jObject = new JSONObject(resp);
+                //
+                StringBuffer sb = new StringBuffer(resp);
+                if (sb.charAt(0) == '[') {
+                    sb.delete(resp.length() - 1, resp.length());
+                    sb.delete(0, 1);
+
+                }
+
+                //
+                //jObject = new JSONObject(resp);
+                jObject = new JSONObject(sb.toString());
 
                 //Log.i("jTitle",jObject.getString("title"));
                 //Log.i("jBody",jObject.getString("body"));
@@ -146,6 +156,7 @@ public class AtYourServiceActivity extends AppCompatActivity {
         protected void onPostExecute(JSONObject jObject) {
             super.onPostExecute(jObject);
             TextView result_view = (TextView) findViewById(R.id.result_textview);
+            TextView country_view = (TextView) findViewById(R.id.capital);
 
             try {
                 //result_view.setText(jObject.getString("title"));
@@ -164,10 +175,16 @@ public class AtYourServiceActivity extends AppCompatActivity {
                     //result_view.setText(jObject.getString("countryName"));
                 } else {
                     // Show country info
+                    country_view.setText(jObject.getString("capital"));
                 }
             } catch (JSONException e) {
                 progressBar.setVisibility(View.INVISIBLE);
-                result_view.setText("Not a valid ip");
+                if (displayIp == 1) {
+                    result_view.setText("Not a valid ip");
+                } else {
+                    // show country info
+                    country_view.setText("sorry, no info available");
+                }
             }
 
         }
