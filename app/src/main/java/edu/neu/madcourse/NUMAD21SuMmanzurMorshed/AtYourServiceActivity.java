@@ -85,7 +85,7 @@ public class AtYourServiceActivity extends AppCompatActivity {
 
             String urlStringAll = null;
             try {
-                urlStringAll = "https://restcountries.eu/rest/v2/name/" + ipObject.getString("countryCode3");
+                urlStringAll = "https://restcountries.eu/rest/v2/alpha/" + ipObject.getString("countryCode3");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
