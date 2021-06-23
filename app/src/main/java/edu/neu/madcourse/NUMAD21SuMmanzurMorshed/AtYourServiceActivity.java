@@ -33,6 +33,9 @@ public class AtYourServiceActivity extends AppCompatActivity {
     private String mURLEditText = "https://api.ip2country.info/ip?";
     private TextView mTitleTextView;
 
+    private JSONObject ipObject;
+    private int displayIp = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +57,39 @@ public class AtYourServiceActivity extends AppCompatActivity {
     public void callWebserviceButtonHandler(View view){
         progressBar.setVisibility(View.VISIBLE);
         PingWebServiceTask task = new PingWebServiceTask();
-        
+        displayIp = 1;
+
         try {
             //String url = NetworkUtil.validInput(mURLEditText.getText().toString());
             //String url = NetworkUtil.validInput(mURLEditText);
             EditText onlyURL = (EditText)findViewById(R.id.URL_editText);
             String urlStringAll = mURLEditText + onlyURL.getText().toString();
+            String url = NetworkUtil.validInput(urlStringAll);
+            task.execute(url); // This is a security risk.  Don't let your user enter the URL in a real app.
+        } catch (NetworkUtil.MyException e) {
+            Toast.makeText(getApplication(),e.toString(),Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+
+    public void getCountryInfo(View view){
+        progressBar.setVisibility(View.VISIBLE);
+        PingWebServiceTask task = new PingWebServiceTask();
+        displayIp = 0;
+
+        try {
+            //String url = NetworkUtil.validInput(mURLEditText.getText().toString());
+            //String url = NetworkUtil.validInput(mURLEditText);
+            EditText onlyURL = (EditText)findViewById(R.id.URL_editText);
+
+            String urlStringAll = null;
+            try {
+                urlStringAll = "https://restcountries.eu/rest/v2/name/" + ipObject.getString("countryName");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
             String url = NetworkUtil.validInput(urlStringAll);
             task.execute(url); // This is a security risk.  Don't let your user enter the URL in a real app.
         } catch (NetworkUtil.MyException e) {
@@ -120,12 +150,21 @@ public class AtYourServiceActivity extends AppCompatActivity {
             try {
                 //result_view.setText(jObject.getString("title"));
                 progressBar.setVisibility(View.INVISIBLE);
-                if (jObject.getString("countryName").length() == 0) {
-                    result_view.setText(jObject.getString("IP Location Unknown"));
+                ipObject = jObject;
+                if (displayIp == 1) {
+                    //displayIp = 0;
+                    if (jObject.getString("countryName").length() == 0) {
+                        result_view.setText(jObject.getString("IP Location Unknown"));
+                    } else {
+                        String output = jObject.getString("countryName") + " "
+                                + jObject.getString("countryEmoji");
+                        //result_view.setText(jObject.getString("countryName"));
+                        result_view.setText(output);
+                    }
+                    //result_view.setText(jObject.getString("countryName"));
                 } else {
-                    result_view.setText(jObject.getString("countryName"));
+                    // Show country info
                 }
-                //result_view.setText(jObject.getString("countryName"));
             } catch (JSONException e) {
                 progressBar.setVisibility(View.INVISIBLE);
                 result_view.setText("Not a valid ip");
