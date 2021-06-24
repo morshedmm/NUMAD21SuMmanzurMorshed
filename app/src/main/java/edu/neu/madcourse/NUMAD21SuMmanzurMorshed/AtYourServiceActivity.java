@@ -55,6 +55,9 @@ public class AtYourServiceActivity extends AppCompatActivity {
     }
 
     public void getIp(View view) {
+        playButton.setVisibility(View.INVISIBLE);
+        TextView country_view = (TextView) findViewById(R.id.capital);
+        country_view.setText("");
         callWebserviceButtonHandler(findViewById(android.R.id.content));
 
     }
@@ -176,6 +179,7 @@ public class AtYourServiceActivity extends AppCompatActivity {
                                 + jObject.getString("countryEmoji");
                         //result_view.setText(jObject.getString("countryName"));
                         result_view.setText(output);
+                        playButton.setText("want more info of " + jObject.getString("countryName"));
                         playButton.setVisibility(View.VISIBLE);
                     }
                     //result_view.setText(jObject.getString("countryName"));
