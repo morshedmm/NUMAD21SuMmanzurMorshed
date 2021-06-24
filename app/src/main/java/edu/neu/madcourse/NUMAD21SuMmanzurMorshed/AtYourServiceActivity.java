@@ -85,6 +85,7 @@ public class AtYourServiceActivity extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
         PingWebServiceTask task = new PingWebServiceTask();
         displayIp = 0;
+        playButton.setVisibility(View.INVISIBLE);
 
         try {
             //String url = NetworkUtil.validInput(mURLEditText.getText().toString());
@@ -185,7 +186,7 @@ public class AtYourServiceActivity extends AppCompatActivity {
                     //result_view.setText(jObject.getString("countryName"));
                 } else {
                     // Show country info
-                    country_view.setText(jObject.getString("capital"));
+                    country_view.setText("Capital: " + jObject.getString("capital"));
                 }
             } catch (JSONException e) {
                 progressBar.setVisibility(View.INVISIBLE);
