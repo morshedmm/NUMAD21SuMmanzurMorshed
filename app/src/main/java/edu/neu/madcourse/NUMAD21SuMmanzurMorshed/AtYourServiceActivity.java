@@ -285,7 +285,7 @@ public class AtYourServiceActivity extends AppCompatActivity {
                                 + jObject.getString("countryEmoji");
                         //result_view.setText(jObject.getString("countryName"));
                         result_view.setText(output);
-                        playButton.setText("want to know other names of " + jObject.getString("countryName") + "?");
+                        playButton.setText("want other names of " + jObject.getString("countryName") + "?");
                         playButton.setVisibility(View.VISIBLE);
                     }
                     //result_view.setText(jObject.getString("countryName"));
