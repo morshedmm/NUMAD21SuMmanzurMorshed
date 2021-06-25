@@ -164,6 +164,8 @@ public class AtYourServiceActivity extends AppCompatActivity {
 
     public void callWebserviceButtonHandler(View view){
         progressBar.setVisibility(View.VISIBLE);
+        itemList = new ArrayList<>();
+        createRecyclerView();
         PingWebServiceTask task = new PingWebServiceTask();
         displayIp = 1;
 
