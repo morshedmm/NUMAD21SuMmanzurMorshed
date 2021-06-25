@@ -169,6 +169,8 @@ public class AtYourServiceActivity extends AppCompatActivity {
         createRecyclerView();
         PingWebServiceTask task = new PingWebServiceTask();
         displayIp = 1;
+        View myLayout = findViewById(android.R.id.content);
+        myLayout.requestFocus();
 
         try {
             //String url = NetworkUtil.validInput(mURLEditText.getText().toString());
