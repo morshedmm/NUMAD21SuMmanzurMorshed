@@ -20,12 +20,16 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AtYourServiceActivity extends AppCompatActivity {
 
     private static final String TAG = "WebServiceActivity";
 
     private ProgressBar progressBar;
+
+    private ArrayList<MyItemCard> itemList = new ArrayList<>();
 
     //private EditText mURLEditText;
     //private String mURLEditText = "https://jsonplaceholder.typicode.com/posts/1";
@@ -187,6 +191,10 @@ public class AtYourServiceActivity extends AppCompatActivity {
                 } else {
                     // Show country info
                     country_view.setText("Capital: " + jObject.getString("capital"));
+                    //List<String> altNames = new ArrayList<String>();
+                    String altNames = jObject.getString("altSpellings");
+                    System.out.print(altNames);
+                    country_view.setText(altNames);
                 }
             } catch (JSONException e) {
                 progressBar.setVisibility(View.INVISIBLE);
