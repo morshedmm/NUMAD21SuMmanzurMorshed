@@ -58,7 +58,7 @@ public class AtYourServiceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_at_your_service);
 
-        init(savedInstanceState);
+        //init(savedInstanceState);
 
         playButton = (Button) findViewById(R.id.learn_more_button);
         playButton.setVisibility(View.INVISIBLE);
@@ -310,6 +310,7 @@ public class AtYourServiceActivity extends AppCompatActivity {
                         country_view.setText(sb2.toString());
                     }
 
+                    createRecyclerView();
 
 
                     //
