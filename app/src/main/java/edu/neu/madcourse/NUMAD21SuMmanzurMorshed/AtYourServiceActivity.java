@@ -1,6 +1,9 @@
 package edu.neu.madcourse.NUMAD21SuMmanzurMorshed;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -42,11 +45,20 @@ public class AtYourServiceActivity extends AppCompatActivity {
     private int displayIp = 1;
     private Button playButton;
 
+    private static final String KEY_OF_INSTANCE = "KEY_OF_INSTANCE";
+    private static final String NUMBER_OF_ITEMS = "NUMBER_OF_ITEMS";
+
+    private RecyclerView recyclerView;
+    private MyRviewAdapter rviewAdapter;
+    private RecyclerView.LayoutManager rLayoutManger;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_at_your_service);
+
+        init(savedInstanceState);
 
         playButton = (Button) findViewById(R.id.learn_more_button);
         playButton.setVisibility(View.INVISIBLE);
@@ -56,6 +68,90 @@ public class AtYourServiceActivity extends AppCompatActivity {
         //mURLEditText = (EditText)findViewById(R.id.URL_editText);
         mTitleTextView = (TextView)findViewById(R.id.result_textview);
         //callWebserviceButtonHandler(findViewById(android.R.id.content));
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+
+
+        int size = itemList == null ? 0 : itemList.size();
+        outState.putInt(NUMBER_OF_ITEMS, size);
+
+        // Need to generate unique key for each item
+        // This is only a possible way to do, please find your own way to generate the key
+        for (int i = 0; i < size; i++) {
+            // put image information id into instance
+            //outState.putInt(KEY_OF_INSTANCE + i + "0", itemList.get(i).getImageSource());
+            // put itemName information into instance
+            outState.putString(KEY_OF_INSTANCE + i + "1", itemList.get(i).getItemName());
+            // put itemDesc information into instance
+            outState.putString(KEY_OF_INSTANCE + i + "2", itemList.get(i).getItemDesc());
+            // put isChecked information into instance
+            //outState.putBoolean(KEY_OF_INSTANCE + i + "3", itemList.get(i).getStatus());
+        }
+        super.onSaveInstanceState(outState);
+
+    }
+
+    private void init(Bundle savedInstanceState) {
+
+        initialItemData(savedInstanceState);
+        createRecyclerView();
+    }
+
+
+    private void initialItemData(Bundle savedInstanceState) {
+
+        // Not the first time to open this Activity
+        if (savedInstanceState != null && savedInstanceState.containsKey(NUMBER_OF_ITEMS)) {
+            if (itemList == null || itemList.size() == 0) {
+
+                int size = savedInstanceState.getInt(NUMBER_OF_ITEMS);
+
+                // Retrieve keys we stored in the instance
+                for (int i = 0; i < size; i++) {
+                    Integer imgId = savedInstanceState.getInt(KEY_OF_INSTANCE + i + "0");
+                    String itemName = savedInstanceState.getString(KEY_OF_INSTANCE + i + "1");
+                    String itemDesc = savedInstanceState.getString(KEY_OF_INSTANCE + i + "2");
+                    boolean isChecked = savedInstanceState.getBoolean(KEY_OF_INSTANCE + i + "3");
+
+                    // We need to make sure names such as "XXX(checked)" will not duplicate
+                    // Use a tricky way to solve this problem, not the best though
+                    if (isChecked) {
+                        itemName = itemName.substring(0, itemName.lastIndexOf("("));
+                    }
+                    MyItemCard itemCard = new MyItemCard(imgId, itemName, itemDesc, isChecked);
+
+                    itemList.add(itemCard);
+                }
+            }
+        }
+        // The first time to open this Activity
+        else {
+            MyItemCard item1 = new MyItemCard(R.drawable.pic_gmail_01, "Gmail", "Example description", false);
+            //ItemCard item2 = new ItemCard(R.drawable.pic_google_01, "Google", "Example description", false);
+            //ItemCard item3 = new ItemCard(R.drawable.pic_youtube_01, "Youtube", "Example description", false);
+            itemList.add(item1);
+            //itemList.add(item2);
+            //itemList.add(item3);
+        }
+
+    }
+
+
+
+
+    private void createRecyclerView() {
+        rLayoutManger = new LinearLayoutManager(this);
+
+       recyclerView = findViewById(R.id.recycler_view2);
+        recyclerView.setHasFixedSize(true);
+
+        rviewAdapter = new MyRviewAdapter(itemList);
+
+        recyclerView.setAdapter(rviewAdapter);
+        recyclerView.setLayoutManager(rLayoutManger);
+
     }
 
     public void getIp(View view) {
@@ -200,6 +296,7 @@ public class AtYourServiceActivity extends AppCompatActivity {
                         sb.delete(0, 1);
 
                     }
+
                     String [] splitted = sb.toString().split(",");
                     for (int idx = 0; idx <splitted.length; idx++) {
                         StringBuffer sb2 = new StringBuffer(splitted[idx]);
@@ -208,9 +305,12 @@ public class AtYourServiceActivity extends AppCompatActivity {
                             sb2.delete(0, 1);
 
                         }
-
+                        MyItemCard itemCard = new MyItemCard(0, String.valueOf(idx + 1), sb2.toString(), false);
+                        itemList.add(itemCard);
                         country_view.setText(sb2.toString());
                     }
+
+
 
                     //
                     //System.out.print(altNames);
