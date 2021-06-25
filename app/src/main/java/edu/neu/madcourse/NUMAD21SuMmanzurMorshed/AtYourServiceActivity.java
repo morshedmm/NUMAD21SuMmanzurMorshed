@@ -193,8 +193,28 @@ public class AtYourServiceActivity extends AppCompatActivity {
                     country_view.setText("Capital: " + jObject.getString("capital"));
                     //List<String> altNames = new ArrayList<String>();
                     String altNames = jObject.getString("altSpellings");
-                    System.out.print(altNames);
-                    country_view.setText(altNames);
+                    //
+                    StringBuffer sb = new StringBuffer(altNames);
+                    if (sb.charAt(0) == '[') {
+                        sb.delete(altNames.length() - 1, altNames.length());
+                        sb.delete(0, 1);
+
+                    }
+                    String [] splitted = sb.toString().split(",");
+                    for (int idx = 0; idx <splitted.length; idx++) {
+                        StringBuffer sb2 = new StringBuffer(splitted[idx]);
+                        if (sb2.charAt(0) == '\"') {
+                            sb2.delete(splitted[idx].length() - 1, splitted[idx].length());
+                            sb2.delete(0, 1);
+
+                        }
+
+                        country_view.setText(sb2.toString());
+                    }
+
+                    //
+                    //System.out.print(altNames);
+                    //country_view.setText(sb.toString());
                 }
             } catch (JSONException e) {
                 progressBar.setVisibility(View.INVISIBLE);
