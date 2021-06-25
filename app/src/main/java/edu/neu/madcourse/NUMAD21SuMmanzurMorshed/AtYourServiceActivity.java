@@ -286,7 +286,7 @@ public class AtYourServiceActivity extends AppCompatActivity {
                     //result_view.setText(jObject.getString("countryName"));
                 } else {
                     // Show country info
-                    country_view.setText("Capital: " + jObject.getString("capital"));
+                    //country_view.setText("Capital: " + jObject.getString("capital"));
                     //List<String> altNames = new ArrayList<String>();
                     String altNames = jObject.getString("altSpellings");
                     //
@@ -307,7 +307,7 @@ public class AtYourServiceActivity extends AppCompatActivity {
                         }
                         MyItemCard itemCard = new MyItemCard(0, String.valueOf(idx + 1), sb2.toString(), false);
                         itemList.add(itemCard);
-                        country_view.setText(sb2.toString());
+                        //country_view.setText(sb2.toString());
                     }
 
                     createRecyclerView();
