@@ -128,10 +128,10 @@ public class AtYourServiceActivity extends AppCompatActivity {
         }
         // The first time to open this Activity
         else {
-            MyItemCard item1 = new MyItemCard(R.drawable.pic_gmail_01, "Gmail", "Example description", false);
+            //MyItemCard item1 = new MyItemCard(R.drawable.pic_gmail_01, "Gmail", "Example description", false);
             //ItemCard item2 = new ItemCard(R.drawable.pic_google_01, "Google", "Example description", false);
             //ItemCard item3 = new ItemCard(R.drawable.pic_youtube_01, "Youtube", "Example description", false);
-            itemList.add(item1);
+           // itemList.add(item1);
             //itemList.add(item2);
             //itemList.add(item3);
         }
@@ -146,6 +146,7 @@ public class AtYourServiceActivity extends AppCompatActivity {
 
        recyclerView = findViewById(R.id.recycler_view2);
         recyclerView.setHasFixedSize(true);
+        //recyclerView.setNestedScrollingEnabled(false);
 
         rviewAdapter = new MyRviewAdapter(itemList);
 
